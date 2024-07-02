@@ -90,8 +90,8 @@ reports based on data from the Human Resources tables.
     
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL]
-DESCRIBE DEPARTMENTS;
-SELECT * FROM DEPARTMENTS;
+DESCRIBE HR.DEPARTMENTS;
+SELECT * FROM HR.DEPARTMENTS;
     \end{lstlisting}
     
     \newpage
@@ -106,7 +106,7 @@ SELECT * FROM DEPARTMENTS;
     
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL]
-DESCRIBE EMPLOYEES;
+DESCRIBE HR.EMPLOYEES;
     \end{lstlisting}
     
     \item The HR department wants a query to display the last name, job ID, hire date, and employee ID for each employee, with the employee ID appearing first. Provide an alias \texttt{STARTDATE} for the \texttt{HIRE\_DATE} column. Save your SQL statement to a file named \texttt{lab\_01\_05.sql} so that you can dispatch this file to the HR department.
@@ -138,7 +138,7 @@ FROM EMPLOYEES;
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL]
 SELECT DISTINCT JOB_ID
-FROM EMPLOYEES;
+FROM HR.EMPLOYEES;
     \end{lstlisting}
     
 \end{enumerate}
@@ -190,11 +190,10 @@ FROM employees;
 
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
-SELECT "Employee ID"||','||"First Name"||','||"Last Name"||
-','||"Email"||','||"Phone Number"||','||"Job ID"||','||
-"Manager ID"||','||"Hire Date"||','||"Commission Pct"||
-','||"Department ID" AS THE_OUTPUT
-FROM EMPLOYEES;
+SELECT Employee_ID||','||First_Name||','||Last_Name||
+','||Email||','||Phone_Number||','||Job_ID||','||
+Manager_ID||','||Hire_Date||','||Commission_Pct||','||Department_ID AS THE_OUTPUT
+FROM HR.EMPLOYEES;
     \end{lstlisting}
     
 \end{enumerate}
@@ -215,8 +214,8 @@ salary of employees who earn more than \$12,000. Save your SQL statement as a fi
 
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
-SELECT last_name, salary
-FROM employees
+SELECT Last_Name, Salary
+FROM HR.employees
 WHERE salary > 12000;
     \end{lstlisting}
         \item Open a new SQL Worksheet. Create a report that displays the last name and department number
@@ -248,8 +247,8 @@ the range of \$5,000 to \$12,000. Save your SQL statement as \texttt{lab\_02\_03
     \newpage
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
-SELECT last_name, salary
-FROM employees
+SELECT Last_name, Salary
+FROM hr.employees
 WHERE salary NOT BETWEEN 5000 AND 12000;
     \end{lstlisting}
     \item Create a report to display the last name, job ID, and hire date for employees with the last names
@@ -264,8 +263,8 @@ of Matos and Taylor. Order the query in ascending order by the hire date.
     
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
-SELECT last_name, job_id, hire_date
-FROM employees
+SELECT 	LAST_NAME, JOB_ID, HIRE_DATE
+FROM hr.employees
 WHERE last_name IN ('Matos', 'Taylor')
 ORDER BY hire_date ASC;
     \end{lstlisting}
@@ -282,7 +281,7 @@ alphabetical order by name.
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name, department_id
-FROM employees
+FROM hr.employees
 WHERE department_id IN (20, 50)
 ORDER BY last_name ASC;
     \end{lstlisting}
@@ -301,7 +300,7 @@ statement in \texttt{lab\_02\_06.sql}.
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name AS Employee, salary AS "Monthly Salary"
-FROM employees
+FROM hr.employees
 WHERE salary BETWEEN 5000 AND 12000
 AND department_id IN (20, 50);
     \end{lstlisting}
@@ -318,7 +317,7 @@ who were hired in 1994.
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name, hire_date
-FROM employees
+FROM hr.employees
 WHERE hire_date LIKE '%94';
     \end{lstlisting}
 
@@ -335,7 +334,7 @@ manager.
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT LAST_NAME, JOB_ID
-FROM employees
+FROM hr.employees
 WHERE manager_id IS NULL;
     \end{lstlisting}
     \item Create a report to display the last name, salary, and commission of all employees who earn
@@ -343,7 +342,7 @@ commissions. Sort data in descending order of salary and commissions.
 Use the column numeric position in the ORDER BY clause.
 \begin{figure}[h]
         \centering
-        \begin{subfigure}[b]{0.35\linewidth}
+        \begin{subfigure}[b]{0.6\linewidth}
             \centering
             \includegraphics[width=\linewidth]{graphics/29.png}
         \end{subfigure}
@@ -352,7 +351,7 @@ Use the column numeric position in the ORDER BY clause.
     \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name, salary, commission_pct
-FROM employees
+FROM hr.employees
 WHERE commission_pct IS NOT NULL
 ORDER BY 2 DESC, 3 DESC;
     \end{lstlisting}
@@ -367,22 +366,22 @@ results:
     \includegraphics*[width=0.35\linewidth]{graphics/210.png}
 \end{figure}
 
-\textbf{Answer: }
-    \begin{lstlisting}[language=SQL, label={lst:employees_data}]
-SELECT last_name, salary
-FROM employees
-WHERE salary > $user_input;
-    \end{lstlisting}
+\textbf{Answer: skipped}
+%     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+% SELECT last_name, salary
+% FROM employees
+% WHERE salary > $user_input;
+%     \end{lstlisting}
     \item The HR department wants to run reports based on a manager. Create a query that prompts the
 user for a manager ID and generates the employee ID, last name, salary, and department for
 that manager's employees. The HR department wants the ability to sort the report on a selected
 column. You can test the data with the following values:
 \begin{figure}[h]
     \centering
-    \includegraphics*[width=.4\linewidth]{graphics/211.png}
+    \includegraphics*[width=.6\linewidth]{graphics/211.png}
 \end{figure}
 
-\textbf{Answer: }
+\textbf{Answer: skipped}
     \item Display all employee last names in which the third letter of the name is``a."
 \begin{figure}[h]
     \centering
@@ -431,9 +430,9 @@ statement in \texttt{lab\_02\_15.sql}.
 
 \textbf{Answer: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
-SELECT last_name AS Employee, salary AS "Monthly Salary"
-FROM employees
-WHERE commission_pct = 0.2;
+SELECT last_name AS Employee, salary AS "Monthly Salary", commission_pct
+FROM hr.employees
+WHERE commission_pct = 0.20;
     \end{lstlisting}
 \end{enumerate}
 \end{document}
