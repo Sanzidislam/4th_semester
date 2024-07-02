@@ -29,7 +29,8 @@
     keywordstyle=\bfseries\color{blue!50},
     numbers=left,
     numberstyle=\tiny,
-    commentstyle=\color{gray}
+    commentstyle=\color{gray},
+    backgroundcolor=\color{gray!10}
 }
 
 \begin{document}
@@ -46,7 +47,7 @@
     \begin{lstlisting}[language=SQL]
 SELECT last_name, job_id, salary AS Sal FROM employees;
     \end{lstlisting}
-    \textbf{Answer:} True
+    \textbf{Answer: } True
 
     \item The following SELECT statement executes successfully:
     \begin{lstlisting}[language=SQL]
@@ -88,7 +89,7 @@ reports based on data from the Human Resources tables.
         \end{subfigure}
     \end{figure}
     
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
 DESCRIBE HR.DEPARTMENTS;
 SELECT * FROM HR.DEPARTMENTS;
@@ -104,7 +105,7 @@ SELECT * FROM HR.DEPARTMENTS;
         \end{subfigure}
     \end{figure}
     
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
 DESCRIBE HR.EMPLOYEES;
     \end{lstlisting}
@@ -113,15 +114,16 @@ DESCRIBE HR.EMPLOYEES;
     Test your query in the \texttt{lab\_01\_05.sql} file to ensure that it runs correctly.
     \begin{figure}[h]
         \centering
-        \begin{subfigure}[b]{0.45\linewidth}
+        \begin{subfigure}[b]{0.6\linewidth}
             \centering
             \includegraphics[width=\linewidth]{graphics/6.png}
         \end{subfigure}
     \end{figure}
     
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-SELECT EMPLOYEE_ID, LAST_NAME, JOB_ID, HIRE_DATE AS STARTDATE
+SELECT EMPLOYEE_ID, LAST_NAME, JOB_ID, HIRE_DATE 
+AS STARTDATE
 FROM EMPLOYEES;
     \end{lstlisting}
     
@@ -135,7 +137,7 @@ FROM EMPLOYEES;
         \end{subfigure}
     \end{figure}
    
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
 SELECT DISTINCT JOB_ID
 FROM HR.EMPLOYEES;
@@ -156,7 +158,7 @@ FROM HR.EMPLOYEES;
         \end{subfigure}
     \end{figure}
 
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
 SELECT EMPLOYEE_ID AS "Emp #",LAST_NAME AS "Employee", 
 JOB_ID AS "Job",HIRE_DATE AS "Hire Date"
@@ -173,7 +175,7 @@ FROM EMPLOYEES;
         \end{subfigure}
     \end{figure}
     
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:concat_query}]
 SELECT last_name || ', ' || job_id AS "Employee and Title"
 FROM employees;
@@ -188,11 +190,12 @@ FROM employees;
         \end{subfigure}
     \end{figure}
 
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT Employee_ID||','||First_Name||','||Last_Name||
 ','||Email||','||Phone_Number||','||Job_ID||','||
-Manager_ID||','||Hire_Date||','||Commission_Pct||','||Department_ID AS THE_OUTPUT
+Manager_ID||','||Hire_Date||','||Commission_Pct||','||
+Department_ID AS THE_OUTPUT
 FROM HR.EMPLOYEES;
     \end{lstlisting}
     
@@ -212,7 +215,7 @@ salary of employees who earn more than \$12,000. Save your SQL statement as a fi
         \end{subfigure}
     \end{figure}
 
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT Last_Name, Salary
 FROM HR.employees
@@ -228,7 +231,7 @@ for employee number 176. Run the query.
         \end{subfigure}
     \end{figure}
 
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name, department_id
 FROM employees
@@ -245,7 +248,7 @@ the range of \$5,000 to \$12,000. Save your SQL statement as \texttt{lab\_02\_03
         \end{subfigure}
     \end{figure}        
     \newpage
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT Last_name, Salary
 FROM hr.employees
@@ -261,7 +264,7 @@ of Matos and Taylor. Order the query in ascending order by the hire date.
         \end{subfigure}
     \end{figure}        
     
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT 	LAST_NAME, JOB_ID, HIRE_DATE
 FROM hr.employees
@@ -278,7 +281,7 @@ alphabetical order by name.
         \end{subfigure}
     \end{figure}        
     
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name, department_id
 FROM hr.employees
@@ -297,7 +300,7 @@ statement in \texttt{lab\_02\_06.sql}.
         \end{subfigure}
     \end{figure}        
     \newpage
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name AS Employee, salary AS "Monthly Salary"
 FROM hr.employees
@@ -314,7 +317,7 @@ who were hired in 1994.
         \end{subfigure}
     \end{figure}        
 
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name, hire_date
 FROM hr.employees
@@ -331,7 +334,7 @@ manager.
         \end{subfigure}
     \end{figure}        
     
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT LAST_NAME, JOB_ID
 FROM hr.employees
@@ -348,7 +351,7 @@ Use the column numeric position in the ORDER BY clause.
         \end{subfigure}
     \end{figure}        
     
-    \textbf{Answer: }
+    \textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name, salary, commission_pct
 FROM hr.employees
@@ -366,7 +369,7 @@ results:
     \includegraphics*[width=0.35\linewidth]{graphics/210.png}
 \end{figure}
 
-\textbf{Answer: skipped}
+\textbf{Solution: skipped}
 %     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 % SELECT last_name, salary
 % FROM employees
@@ -381,14 +384,14 @@ column. You can test the data with the following values:
     \includegraphics*[width=.6\linewidth]{graphics/211.png}
 \end{figure}
 
-\textbf{Answer: skipped}
+\textbf{Solution: skipped}
     \item Display all employee last names in which the third letter of the name is``a."
 \begin{figure}[h]
     \centering
     \includegraphics*[width=.4\linewidth]{graphics/212.png}
 \end{figure}
 
-\textbf{Answer: }
+\textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name
 FROM hr.employees
@@ -400,7 +403,7 @@ WHERE last_name LIKE '__a%';
     \includegraphics*[width=.4\linewidth]{graphics/213.png}
 \end{figure}
 
-\textbf{Answer: }
+\textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name
 FROM hr.employees
@@ -410,10 +413,10 @@ WHERE last_name LIKE '%a%' AND last_name LIKE '%e%';
 representative or of a stock clerk, and whose salaries are not equal to \$2,500, \$3,500, or \$7,000.
 \begin{figure}[h]
     \centering
-    \includegraphics*[width=.4\linewidth]{graphics/214.png}
+    \includegraphics*[width=.5\linewidth]{graphics/214.png}
 \end{figure}
 
-\textbf{Answer: }
+\textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
 SELECT last_name, job_id, salary
 FROM hr.employees
@@ -425,14 +428,188 @@ whose commission is 20\%. Resave \texttt{lab\_02\_06.sql} as \texttt{lab\_02\_15
 statement in \texttt{lab\_02\_15.sql}.
 \begin{figure}[h]
     \centering
-    \includegraphics*[width=.4\linewidth]{graphics/215.png}
+    \includegraphics*[width=.7\linewidth]{graphics/215.png}
 \end{figure}
 
-\textbf{Answer: }
+\textbf{Solution: }
     \begin{lstlisting}[language=SQL, label={lst:employees_data}]
-SELECT last_name AS Employee, salary AS "Monthly Salary", commission_pct
+SELECT last_name AS Employee, salary AS "Monthly Salary",
+commission_pct
 FROM hr.employees
 WHERE commission_pct = 0.20;
     \end{lstlisting}
+\end{enumerate}
+\newpage
+\section*{Chapter 3}
+\subsection*{Practice 3}
+\begin{enumerate}
+    \item Write a query to display the system date. Label the column as Date.
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.2\linewidth]{graphics/31.png}
+    \end{figure}
+
+    \textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT SYSDATE AS "Date"
+FROM dual;
+    \end{lstlisting}
+    \item The HR department needs a report to display the employee number, last name, salary, and
+salary increased by 15.5\% (expressed as a whole number) for each employee. Label the column
+New Salary. Save your SQL statement in a file named \texttt{lab\_03\_02.sql}.
+
+    \textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT employee_id, last_name, salary ,
+ROUND(salary * 1.155) AS "New Salary"
+FROM hr.employees;
+    \end{lstlisting}
+
+    \item Run your query in the \texttt{lab\_03\_02.sql} file.
+
+\textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+-- lab_03_02.sql file
+SELECT employee_id, last_name, salary ,
+ROUND(salary * 1.155) AS "New Salary"
+FROM hr.employees;
+    \end{lstlisting}
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.6\linewidth]{graphics/33.png}
+    \end{figure}
+    \newpage
+        \item Modify your query \texttt{lab\_03\_02.sql} to add a column that subtracts the old salary from the
+new salary. Label the column Increase. Save the contents of the file as \texttt{lab\_03\_04.sql}.
+Run the revised query.
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.7\linewidth]{graphics/34.png}
+    \end{figure}
+
+\textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT employee_id ,last_name ,salary ,
+ROUND(salary * 1.155) AS "New Salary",
+ROUND(salary * 1.155) - salary AS "Increase"
+FROM hr.employees;
+    \end{lstlisting}
+
+        \item Write a query that displays the last name (with the first letter in uppercase and all the other
+letters in lowercase) and the length of the last name for all employees whose name starts with
+the letters “J,” “A,” or “M.” Give each column an appropriate label. Sort the results by the
+employees' last names.
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.4\linewidth]{graphics/35.png}
+    \end{figure}
+
+\textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT INITCAP(last_name) AS "Last Name",
+       LENGTH(last_name) AS "Name Length"
+FROM hr.employees
+WHERE last_name LIKE 'J%' 
+   OR last_name LIKE 'A%' 
+   OR last_name LIKE 'M%'
+ORDER BY last_name;
+    \end{lstlisting}
+
+    \textbf{Rest skipped}
+\newpage
+        \item The HR department wants to find the duration of employment for each employee. For each
+employee, display the last name and calculate the number of months between today and the
+date on which the employee was hired. Label the column as \texttt{MONTHS\_WORKED}. Order your
+results by the number of months employed. Round the number of months up to the closest
+whole number.
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.4\linewidth]{graphics/36.png}
+    \end{figure}
+
+\textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT last_name AS "Last Name",
+    Round(MONTHS_BETWEEN(SYSDATE, hire_date))
+    AS "MONTHS_WORKED"
+FROM hr.employees
+ORDER BY "MONTHS_WORKED"; 
+    \end{lstlisting}
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.31\linewidth]{graphics/36.1.png}
+    \end{figure}
+    \newpage
+    
+            \item Create a query to display the last name and salary for all employees. Format the salary to be 15
+characters long, left-padded with the \$ symbol. Label the column as SALARY.
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.5\linewidth]{graphics/37.png}
+    \end{figure}
+
+\textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT last_name 
+    LPAD('$' || salary, 15, '$') AS "SALARY"
+FROM hr.employees;
+
+    \end{lstlisting}
+        \item Create a query that displays the first eight characters of the employees' last names and indicates
+the amounts of their salaries with asterisks. Each asterisk signifies a thousand dollars. Sort the
+data in descending order of salary. Label the column as
+\texttt{EMPLOYEES\_AND\_THEIR\_SALARIES}. 
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.5\linewidth]{graphics/38.png}
+    \end{figure}
+
+\textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT SUBSTR(last_name, 1, 8) || 
+    RPAD('*', salary / 1000, '*') 
+    AS "EMPLOYEES_AND_THEIR_SALARIES"
+FROM hr.employees
+ORDER BY salary DESC;
+    \end{lstlisting}
+    \newpage
+            \item Create a query to display the last name and the number of weeks employed for all employees in
+department 90. Label the number of weeks column as TENURE. Truncate the number of weeks
+value to 0 decimal places. Show the records in descending order of the employee's tenure.
+Note: The TENURE value will differ as it depends on the date on which you run the query.
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.5\linewidth]{graphics/39.png}
+    \end{figure}
+
+\textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT last_name AS "Last Name",
+    TRUNC((SYSDATE - hire_date) / 7, 0) AS "TENURE"
+FROM hr.employees
+WHERE department_id = 90
+ORDER BY "TENURE" DESC;
+    \end{lstlisting}
+    \item Create a query to display the last name and the number of weeks employed for all employees in
+department 90. Label the number of weeks column as TENURE. Truncate the number of weeks
+value to 0 decimal places. Show the records in descending order of the employee's tenure.
+Note: The TENURE value will differ as it depends on the date on which you run the query.
+    \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.3\linewidth]{graphics/39.png}
+    \end{figure}
+
+\textbf{Solution: }
+        \begin{lstlisting}[language=SQL, label={lst:employees_data}]
+SELECT last_name AS "Last Name",
+    TRUNC((SYSDATE - hire_date) / 7, 0) AS "TENURE"
+FROM hr.employees
+WHERE department_id = 90
+ORDER BY "TENURE" DESC;
+    \end{lstlisting}
+        \begin{figure}[h]
+        \centering
+        \includegraphics*[width=.25\linewidth]{graphics/39.1.png}
+    \end{figure}
 \end{enumerate}
 \end{document}
