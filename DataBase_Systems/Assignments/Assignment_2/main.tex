@@ -169,4 +169,183 @@ FROM employees;
 
     \end{lstlisting}
 \end{enumerate}
+
+\newpage
+\section*{Chapter 5}
+\subsection*{practice 5}
+\begin{enumerate}
+    \item Group functions work across many rows to produce one result per group.\\
+True/False\\\\
+    \textbf{Answer: }\textcolor{blue}{True}
+    \item Group functions include nulls in calculations. \\
+True/False\\\\
+    \textbf{Answer: }\textcolor{blue}{True}
+    \item The WHERE clause restricts rows before inclusion in a group calculation.\\
+True/False\\\\
+    \textbf{Answer: }\textcolor{blue}{True}
+
+    \item     Find the highest, lowest, sum, and average salary of all employees. Label the columns
+as Maximum, Minimum, Sum, and Average, respectively. Round your results to the nearest
+whole number. Save your SQL statement as \texttt{lab\_05\_04.sql}. Run the query.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/64.png}
+    \end{figure}
+
+    \textbf{Solution: }
+    \begin{lstlisting}[language=SQL]
+SELECT 
+    ROUND(MAX(salary)) AS Maximum,
+    ROUND(MIN(salary)) AS Minimum,
+    ROUND(SUM(salary)) AS Sum,
+    ROUND(AVG(salary)) AS Average
+FROM 
+    hr.employees;
+    \end{lstlisting}
+    %problem 5
+        \item Modify the query in \texttt{lab\_05\_04.sql} to display the minimum, maximum, sum, and average
+salary for each job type. Resave \texttt{lab\_05\_04.sql} as \texttt{lab\_05\_05.sql}. Run the statement
+in \texttt{lab\_05\_05.sql}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/65.png}
+    \end{figure}
+
+    \textbf{Solution: }
+    \begin{lstlisting}[language=SQL]
+SELECT job_id,
+    ROUND(MIN(salary)) AS Minimum,
+    ROUND(MAX(salary)) AS Maximum,
+    ROUND(SUM(salary)) AS Sum,
+    ROUND(AVG(salary)) AS Average
+FROM hr.employees
+GROUP BY job_id;
+    \end{lstlisting}
+    %problem 6
+        \item Write a query to display the number of people with the same job.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/66.1.png}
+    \end{figure}
+
+    \textbf{Solution: }
+    \begin{lstlisting}[language=SQL]
+SELECT job_id,
+    COUNT(*) 
+FROM hr.employees
+GROUP BY job_id;
+    \end{lstlisting}
+    %problem 7
+        \item Determine the number of managers without listing them. Label the column as Number of
+Managers. Hint: Use the \texttt{MANAGER\_ID} column to determine the number of managers.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/67.png}
+    \end{figure}
+
+    \textbf{Solution: }
+    \begin{lstlisting}[language=SQL]
+SELECT 
+    COUNT(DISTINCT manager_id) AS "Number of Managers"
+FROM 
+    hr.employees
+WHERE 
+    manager_id IS NOT NULL;
+
+    \end{lstlisting}
+    %peoblem 8
+        \item Find the difference between the highest and lowest salaries. Label the column DIFFERENCE.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/68.png}
+    \end{figure}
+
+    \textbf{Solution: }
+    \begin{lstlisting}[language=SQL]
+SELECT 
+    (MAX(salary) - MIN(salary)) AS DIFFERENCE
+FROM 
+    hr.employees;
+    \end{lstlisting}
+        %peoblem 9
+        \item Create a report to display the manager number and the salary of the lowest-paid employee for
+that manager. Exclude anyone whose manager is not known. Exclude any groups where the
+minimum salary is \$6,000 or less. Sort the output in descending order of salary.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/69.png}
+    \end{figure}
+
+    \textbf{Solution: }
+    \begin{lstlisting}[language=SQL]
+SELECT 
+    manager_id,
+    MIN(salary) AS min_salary
+FROM 
+    hr.employees
+WHERE 
+    manager_id IS NOT NULL
+GROUP BY 
+    manager_id
+HAVING 
+    MIN(salary) > 6000
+ORDER BY 
+    min_salary DESC;
+    \end{lstlisting}
+    %peoblem 10
+    \item Create a query to display the total number of employees and, of that total, the number of
+employees hired in 1995, 1996, 1997, and 1998. Create appropriate column headings.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/610.png}
+    \end{figure}
+
+    \textbf{Solution: }
+    \begin{lstlisting}[language=SQL]
+SELECT 
+    COUNT(*) AS "TOTAL",
+    SUM(CASE WHEN TO_CHAR(hire_date, 'YYYY') = '1995' 
+        THEN 1 ELSE 0 END) AS "1995",
+    SUM(CASE WHEN TO_CHAR(hire_date, 'YYYY') = '1996' 
+        THEN 1 ELSE 0 END) AS "1996",
+    SUM(CASE WHEN TO_CHAR(hire_date, 'YYYY') = '1997' 
+        THEN 1 ELSE 0 END) AS "1997",
+    SUM(CASE WHEN TO_CHAR(hire_date, 'YYYY') = '1998'
+        THEN 1 ELSE 0 END) AS "1998"
+FROM 
+    hr.employees;
+    \end{lstlisting}
+    %peoblem 11
+    \item Create a matrix query to display the job, the salary for that job based on department number,
+and the total salary for that job, for departments 20, 50, 80, and 90, giving each column an
+appropriate heading.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\linewidth]{graphics/611.png}
+    \end{figure}
+
+    \textbf{Solution: }
+    \begin{lstlisting}[language=SQL]
+SELECT 
+    job_id AS "Job",
+    SUM(CASE WHEN department_id = 20 
+        THEN salary ELSE NULL END) AS "Dept 20 Salary",
+    SUM(CASE WHEN department_id = 50 
+        THEN salary ELSE NULL END) AS "Dept 50 Salary",
+    SUM(CASE WHEN department_id = 80 
+        THEN salary ELSE NULL END) AS "Dept 80 Salary",
+    SUM(CASE WHEN department_id = 90 
+        THEN salary ELSE NULL END) AS "Dept 90 Salary",
+    SUM(salary) AS "Total Salary"
+FROM 
+   hr. employees
+WHERE 
+    department_id IN (20, 50, 80, 90)
+GROUP BY 
+    job_id
+ORDER BY 
+    job_id;
+
+    \end{lstlisting}
+\end{enumerate}
 \end{document}
