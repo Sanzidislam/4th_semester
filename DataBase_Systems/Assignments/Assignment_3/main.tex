@@ -49,37 +49,55 @@ province, and country in the output. Use a NATURAL JOIN to produce the results.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.6\linewidth]{graphics/61.png}
+            \includegraphics[width=.7\linewidth]{graphics/61.png}
     \end{figure}
     
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT location_id,
+    street_address,
+    city,
+    state_province,
+    country_name
+FROM hr.LOCATIONS
+NATURAL JOIN hr.COUNTRIES;
     \end{lstlisting}
         \item The HR department needs a report of all employees. Write a query to display the last name,
 department number, and department name for all the employees.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.6\linewidth]{graphics/62.png}
+            \includegraphics[width=.5\linewidth]{graphics/62.png}
     \end{figure}
     
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT e.last_name, 
+    e.department_id, 
+    d.department_name
+FROM hr.EMPLOYEES e
+LEFT JOIN hr.DEPARTMENTS d 
+    ON e.department_id = d.department_id;
     \end{lstlisting}
-    \newpage
+    %\newpage
     \item The HR department needs a report of employees in Toronto. Display the last name, job,
 department number, and the department name for all employees who work in Toronto.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.4\linewidth]{graphics/63.png}
+            \includegraphics[width=.6\linewidth]{graphics/63.png}
     \end{figure}
     
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT last_name,
+       job_id,
+       department_id,
+       department_name
+FROM hr.employees
+JOIN hr.departments USING (department_id)
+JOIN hr.locations USING (location_id)
+WHERE city = 'Toronto';
     \end{lstlisting}
         \item Create a report to display employees' last name and employee number along with their
 manager's last name and manager number. Label the columns Employee, Emp\#, Manager,
@@ -89,12 +107,19 @@ and Mgr\#, respectively. Save your SQL statement as \texttt{lab\_06\_04.sql}. Ru
             \centering
             \includegraphics[width=.35\linewidth]{graphics/64.png}
     \end{figure}
-    \newpage
-    \textbf{Solution: }
+    %\newpage
+    
+     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT e.last_name AS Employee, 
+    e.employee_id AS Emp#, 
+    m.last_name AS Manager, 
+    m.employee_id AS Mgr#
+FROM hr.EMPLOYEES e
+JOIN hr.EMPLOYEES m 
+    ON e.manager_id = m.employee_id;
     \end{lstlisting}
-    % \newpage
+    \newpage
         \item \texttt{Modify\ lab\_06\_04.sql} to display all employees including King, who has no manager.
 Order the results by the employee number. Save your SQL statement as \texttt{lab\_06\_05.sql}.
 Run the query in \texttt{lab\_06\_05.sql}.
@@ -102,12 +127,19 @@ Run the query in \texttt{lab\_06\_05.sql}.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.3\linewidth]{graphics/65.png}
+            \includegraphics[width=.5\linewidth]{graphics/65.png}
     \end{figure}
 
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT e.last_name AS Employee, 
+    e.employee_id AS Emp#, 
+    m.last_name AS Manager, 
+    m.employee_id AS Mgr#
+FROM hr.EMPLOYEES e
+LEFT JOIN hr.EMPLOYEES m 
+    ON e.manager_id = m.employee_id
+ORDER BY e.employee_id;
     \end{lstlisting}
     \newpage
     \item Create a report for the HR department that displays employee last names, department numbers,
@@ -116,60 +148,108 @@ column an appropriate label. Save the script to a file named \texttt{lab\_06\_06
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.3\linewidth]{graphics/66.png}
+            \includegraphics[width=.5\linewidth]{graphics/66.png}
     \end{figure}
     
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT 
+    e1.department_id AS Department#, 
+    e1.last_name AS Employee, 
+    e2.last_name AS Colleague
+FROM hr.EMPLOYEES e1
+JOIN hr.EMPLOYEES e2 
+    ON e1.department_id = e2.department_id
+WHERE e1.employee_id != e2.employee_id
+ORDER BY e1.department_id, 
+    e1.last_name, 
+    e2.last_name;
     \end{lstlisting}
 
         \item The HR department needs a report on job grades and salaries. To familiarize yourself with the
 \texttt{JOB\_GRADES} table, first show the structure of the \texttt{JOB\_GRADES} table. Then create a query
 that displays the name, job, department name, salary, and grade for all employees.
     
+    % \begin{figure}[h]
+    %     \centering
+    %         \centering
+    %         \includegraphics[width=.5\linewidth]{graphics/67.1.png}
+    % \end{figure}
+    % \begin{figure}[h]
+    %     \centering
+    %         \centering
+    %         \includegraphics[width=.5\linewidth]{graphics/67.2.png}
+    % \end{figure}
     \begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\linewidth}
         \centering
-            \centering
-            \includegraphics[width=.3\linewidth]{graphics/67.1.png}
-    \end{figure}
-
+        \includegraphics[width=\linewidth]{graphics/67.1.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.5\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{graphics/67.2.png}
+    \end{subfigure}
+\end{figure}
+\newpage
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT last_name,
+       job_id,
+       department_name,
+       salary,
+       grade_level
+FROM employees
+JOIN departments USING (department_id)
+JOIN job_grades 
+    ON (salary BETWEEN lowest_sal AND highest_sal)
+ORDER BY salary;
     \end{lstlisting}
-    \newpage
+    %\newpage
     \item The HR department wants to determine the names of all the employees who were hired after
 Davies. Create a query to display the name and hire date of any employee hired after employee
 Davies.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.3\linewidth]{graphics/68.png}
+            \includegraphics[width=.5\linewidth]{graphics/68.png}
     \end{figure}
     
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
-
+SELECT last_name ,hire_date
+FROM hr.EMPLOYEES e
+WHERE hire_date > (
+        SELECT hire_date 
+        FROM hr.EMPLOYEES 
+        WHERE last_name = 'Davies'
+    );
     \end{lstlisting}
     \item The HR department needs to find the names and hire dates of all the employees who were hired
 before their managers, along with their managers' names and hire dates. Save the script to a file
 named \texttt{lab\_06\_09.sql}.
-    \begin{figure}[h]
+\newpage 
+\begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.3\linewidth]{graphics/69.png}
+            \includegraphics[width=.7\linewidth]{graphics/69.png}
     \end{figure}
     
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
-
+SELECT e.last_name,
+    e.hire_date,
+    m.last_name as last_name_1,
+    m.hire_date as hire_date_1
+FROM hr.EMPLOYEES e
+JOIN hr.EMPLOYEES m 
+	ON e.manager_id = m.employee_id
+WHERE e.hire_date < m.hire_date;
     \end{lstlisting}
 \end{enumerate}
 
-
+\newpage
 
 
 
@@ -192,13 +272,13 @@ Zlotkey, find all employees who work with Zlotkey (excluding Zlotkey).
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.6\linewidth]{graphics/71.png}
+            \includegraphics[width=.5\linewidth]{graphics/71.png}
     \end{figure}
     
-    \textbf{Solution: }
-    \begin{lstlisting}[language=SQL]
+    \textbf{Solution: } Skipped. (sql*plus required.)
+    % \begin{lstlisting}[language=SQL]
 
-    \end{lstlisting}
+    % \end{lstlisting}
         \item Create a report that displays the employee number, last name, and salary of all employees who
 earn more than the average salary. Sort the results in order of ascending salary.
     \begin{figure}[h]
@@ -209,36 +289,61 @@ earn more than the average salary. Sort the results in order of ascending salary
     
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT 
+    employee_id, 
+    last_name, 
+    salary
+FROM 
+    hr.employees
+WHERE salary > (SELECT AVG(salary) 
+                FROM hr.employees)
+order by salary;
     \end{lstlisting}
-    \newpage
+    %\newpage
     \item Write a query that displays the employee number and last name of all employees who work in a
 department with any employee whose last name contains the letter “u.” Save your SQL
 statement as \texttt{lab\_07\_03.sql}. Run your query.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.4\linewidth]{graphics/73.png}
+            \includegraphics[width=.5\linewidth]{graphics/73.png}
     \end{figure}
     
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT employee_id,
+    last_name
+FROM hr.employees
+WHERE department_id IN (
+   SELECT department_id
+   FROM hr.employees
+   WHERE last_name LIKE '%u%'
+);
     \end{lstlisting}
         \item The HR department needs a report that displays the last name, department number, and job ID
 of all employees whose department location ID is 1700.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.35\linewidth]{graphics/74.png}
+            \includegraphics[width=.7\linewidth]{graphics/74.png}
     \end{figure}
-    Modify the query so that the user is prompted for a location ID. Save this to a file named
-\texttt{lab\_07\_04.sql}.
     \newpage
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT last_name,
+    department_id,
+    job_id
+FROM hr.employees
+WHERE department_id IN (
+   SELECT department_id
+   FROM departments
+   WHERE location_id = 1700
+)
+ORDER BY department_id;
     \end{lstlisting}
+    Modify the query so that the user is prompted for a location ID. Save this to a file named
+\texttt{lab\_07\_04.sql}.\\ \\
+\textbf{Skipped (sql*plus required.}
     % \newpage
         \item Create a report for HR that displays the last name and salary of every employee who reports to
 King.
@@ -246,12 +351,18 @@ King.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.3\linewidth]{graphics/75.png}
+            \includegraphics[width=.5\linewidth]{graphics/75.png}
     \end{figure}
 
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT last_name,salary
+FROM hr.employees
+WHERE manager_id in (
+   SELECT manager_id
+   FROM hr.employees
+   WHERE last_name = 'King'
+);
     \end{lstlisting}
         \item Create a report for HR that displays the department number, last name, and job ID for every
 employee in the Executive department.
@@ -260,12 +371,18 @@ employee in the Executive department.
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.3\linewidth]{graphics/76.png}
+            \includegraphics[width=.6\linewidth]{graphics/76.png}
     \end{figure}
-
+\newpage
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+select department_id, last_name, job_id
+from hr.employees
+where department_id=(
+    select department_id
+    from hr.departments
+    where department_name = 'Executive'
+);
     \end{lstlisting}
         \item Modify the query in \texttt{lab\_07\_03.sql} to display the employee number, last name, and salary
 of all employees who earn more than the average salary, and who work in a department with
@@ -276,12 +393,24 @@ any employee whose last name contains a ``u." Resave \texttt{lab\_07\_03.sql} as
     \begin{figure}[h]
         \centering
             \centering
-            \includegraphics[width=.3\linewidth]{graphics/77.png}
+            \includegraphics[width=.6\linewidth]{graphics/77.png}
     \end{figure}
 
     \textbf{Solution: }
     \begin{lstlisting}[language=SQL]
-
+SELECT employee_id,
+    last_name,
+    salary
+FROM hr.employees
+WHERE salary > (
+        SELECT AVG (salary)
+        FROM hr.employees
+    )
+    AND department_id IN (
+        SELECT department_id
+        FROM hr.employees
+        WHERE last_name LIKE '%u%'
+    );
     \end{lstlisting}
 \end{enumerate}
 
