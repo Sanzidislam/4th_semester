@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.1)  13 JUL 2024 18:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.1)  13 JUL 2024 21:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -241,101 +241,118 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./university_logo.png>] (./chapter_9.tex
-<graphics/91.png, id=12, 1301.86375pt x 604.2575pt>
+<graphics/91.png, id=12, 1280.785pt x 418.56375pt>
 File: graphics/91.png Graphic file (type png)
 <use graphics/91.png>
 Package pdftex.def Info: graphics/91.png  used on input line 9.
-(pdftex.def)             Requested size: 317.07614pt x 147.16385pt.
+(pdftex.def)             Requested size: 317.07614pt x 103.61879pt.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 14.
-<graphics/p91.png, id=13, 369.38pt x 70.2625pt>
+<graphics/p91.png, id=13, 285.065pt x 154.5775pt>
 File: graphics/p91.png Graphic file (type png)
 <use graphics/p91.png>
-Package pdftex.def Info: graphics/p91.png  used on input line 24.
-(pdftex.def)             Requested size: 226.48395pt x 43.0809pt.
-<graphics/93.png, id=14, 1309.89375pt x 731.73375pt>
+Package pdftex.def Info: graphics/p91.png  used on input line 23.
+(pdftex.def)             Requested size: 226.48395pt x 122.81067pt.
+<graphics/93.png, id=14, 1208.515pt x 389.455pt>
 File: graphics/93.png Graphic file (type png)
 <use graphics/93.png>
-Package pdftex.def Info: graphics/93.png  used on input line 44.
-(pdftex.def)             Requested size: 317.07614pt x 177.127pt.
+Package pdftex.def Info: graphics/93.png  used on input line 43.
+(pdftex.def)             Requested size: 317.07614pt x 102.177pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1 <./graphics/91.png> <./graphics/p91.png>]
-<graphics/p93.png, id=22, 375.4025pt x 114.4275pt>
+<graphics/p93.png, id=22, 319.1925pt x 238.8925pt>
 File: graphics/p93.png Graphic file (type png)
 <use graphics/p93.png>
-Package pdftex.def Info: graphics/p93.png  used on input line 61.
-(pdftex.def)             Requested size: 226.48395pt x 69.0359pt.
+Package pdftex.def Info: graphics/p93.png  used on input line 60.
+(pdftex.def)             Requested size: 181.18439pt x 135.60512pt.
 <graphics/94.png, id=23, 1306.8825pt x 270.00874pt>
 File: graphics/94.png Graphic file (type png)
 <use graphics/94.png>
-Package pdftex.def Info: graphics/94.png  used on input line 68.
+Package pdftex.def Info: graphics/94.png  used on input line 67.
 (pdftex.def)             Requested size: 317.07614pt x 65.50793pt.
-<graphics/p94.png, id=24, 375.4025pt x 114.4275pt>
+<graphics/p94.png, id=24, 319.1925pt x 238.8925pt>
 File: graphics/p94.png Graphic file (type png)
 <use graphics/p94.png>
-Package pdftex.def Info: graphics/p94.png  used on input line 81.
-(pdftex.def)             Requested size: 226.48395pt x 69.0359pt.
+Package pdftex.def Info: graphics/p94.png  used on input line 80.
+(pdftex.def)             Requested size: 158.54152pt x 118.65494pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<graphics/95.png, id=25, 1303.87125pt x 184.69pt>
-File: graphics/95.png Graphic file (type png)
-<use graphics/95.png>
-Package pdftex.def Info: graphics/95.png  used on input line 90.
-(pdftex.def)             Requested size: 226.48395pt x 32.07886pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [2 <./graphics/93.png> <./graphics/p93.png> <./graphics/94.png>]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 97.
+<graphics/95.png, id=31, 1303.87125pt x 184.69pt>
+File: graphics/95.png Graphic file (type png)
+<use graphics/95.png>
+Package pdftex.def Info: graphics/95.png  used on input line 89.
+(pdftex.def)             Requested size: 226.48395pt x 32.07886pt.
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 96.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<graphics/p95.png, id=32, 198.7425pt x 100.375pt>
+<graphics/p95.png, id=32, 117.43875pt x 133.49875pt>
 File: graphics/p95.png Graphic file (type png)
 <use graphics/p95.png>
-Package pdftex.def Info: graphics/p95.png  used on input line 102.
-(pdftex.def)             Requested size: 226.48395pt x 114.38884pt.
+Package pdftex.def Info: graphics/p95.png  used on input line 101.
+(pdftex.def)             Requested size: 90.5922pt x 102.9797pt.
 
-Overfull \hbox (14.34807pt too wide) in paragraph at lines 106--110
+Overfull \hbox (14.34807pt too wide) in paragraph at lines 105--109
 \OT1/cmr/m/n/12 DE-PART-MENT[]ID columns. Name the columns in your new ta-ble ID, FIRST[]NAME,
  []
 
 [3 <./graphics/p94.png> <./graphics/95.png> <./graphics/p95.png>]
-<graphics/p99.png, id=40, 473.77pt x 79.29625pt>
+<graphics/p99.png, id=40, 591.20876pt x 135.50626pt>
 File: graphics/p99.png Graphic file (type png)
 <use graphics/p99.png>
-Package pdftex.def Info: graphics/p99.png  used on input line 154.
-(pdftex.def)             Requested size: 362.37569pt x 60.65414pt.
-<graphics/p910.png, id=41, 382.42876pt x 121.45375pt>
+Package pdftex.def Info: graphics/p99.png  used on input line 152.
+(pdftex.def)             Requested size: 362.37569pt x 83.0598pt.
+<graphics/p910.png, id=41, 333.245pt x 221.82875pt>
 File: graphics/p910.png Graphic file (type png)
 <use graphics/p910.png>
-Package pdftex.def Info: graphics/p910.png  used on input line 171.
-(pdftex.def)             Requested size: 226.48395pt x 71.92764pt.
-) [4 <./graphics/p99.png> <./graphics/p910.png>] [5] (./chapter_10.tex
-<graphics/104.png, id=50, 1324.95pt x 264.99pt>
+Package pdftex.def Info: graphics/p910.png  used on input line 168.
+(pdftex.def)             Requested size: 226.48395pt x 150.76369pt.
+ [4 <./graphics/p99.png> <./graphics/p910.png>]
+<graphics/p911.png, id=47, 331.2375pt x 178.6675pt>
+File: graphics/p911.png Graphic file (type png)
+<use graphics/p911.png>
+Package pdftex.def Info: graphics/p911.png  used on input line 185.
+(pdftex.def)             Requested size: 226.48395pt x 122.16293pt.
+File: graphics/p911.png Graphic file (type png)
+<use graphics/p911.png>
+Package pdftex.def Info: graphics/p911.png  used on input line 201.
+(pdftex.def)             Requested size: 226.48395pt x 122.16293pt.
+) [5 <./graphics/p911.png>] (./chapter_10.tex
+<graphics/104.png, id=52, 1324.95pt x 264.99pt>
 File: graphics/104.png Graphic file (type png)
 <use graphics/104.png>
-Package pdftex.def Info: graphics/104.png  used on input line 50.
-(pdftex.def)             Requested size: 317.07614pt x 63.41289pt.
-) [6 <./graphics/104.png>] (./chapter_8.tex) [7] (./main.aux) ) 
+Package pdftex.def Info: graphics/104.png  used on input line 56.
+(pdftex.def)             Requested size: 362.37569pt x 72.4742pt.
+ [6 <./graphics/104.png>]
+<graphics/p104.png, id=58, 331.2375pt x 182.6825pt>
+File: graphics/p104.png Graphic file (type png)
+<use graphics/p104.png>
+Package pdftex.def Info: graphics/p104.png  used on input line 69.
+(pdftex.def)             Requested size: 226.48395pt x 124.90817pt.
+File: graphics/p95.png Graphic file (type png)
+<use graphics/p95.png>
+Package pdftex.def Info: graphics/p95.png  used on input line 86.
+(pdftex.def)             Requested size: 135.89174pt x 154.47566pt.
+) [7 <./graphics/p104.png>] (./chapter_8.tex [8] [9]) [10] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 6173 strings out of 478287
- 97962 string characters out of 5849290
- 592262 words of memory out of 5000000
- 24320 multiletter control sequences out of 15000+600000
+ 6201 strings out of 478287
+ 98480 string characters out of 5849290
+ 591262 words of memory out of 5000000
+ 24346 multiletter control sequences out of 15000+600000
  474286 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,7n,77p,378b,1739s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,7n,77p,378b,1737s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (8 pages, 636561 bytes).
+Output written on main.pdf (11 pages, 512357 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

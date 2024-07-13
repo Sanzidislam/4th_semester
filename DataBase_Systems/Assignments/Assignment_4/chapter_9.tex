@@ -12,10 +12,9 @@ Confirm that the table is created
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
 CREATE TABLE dept(
-    ID INT (7),
-    NAME VARCHAR(25)
+    id NUMBER(7),
+    name VARCHAR2(25)
 );
-
 DESCRIBE DEPT;
 \end{lstlisting}
 \textbf{Output: }
@@ -32,7 +31,7 @@ you need.
 \begin{lstlisting}[language=SQL]
 INSERT INTO dept
 SELECT department_id, department_name
-FROM departments;
+FROM hr.departments;
 \end{lstlisting}
 
 %%%%%%%%% Problem 3 %%%%%%%%%%%
@@ -47,10 +46,10 @@ created.
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
 CREATE TABLE emp(
-    id int (7),
-    last_name varchar(25),
-    first_name varchar(25),
-    dept_id int (7)
+    id number (7),
+    last_name varchar2(25),
+    first_name varchar2(25),
+    dept_id number (7)
 );
 
 DESCRIBE emp;
@@ -58,7 +57,7 @@ DESCRIBE emp;
 \textbf{Output: }
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{graphics/p93.png}
+    \includegraphics[width=0.4\linewidth]{graphics/p93.png}
 \end{figure}
 
 %%%%%%%%% Problem 4 %%%%%%%%%%%
@@ -71,18 +70,18 @@ DESCRIBE emp;
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
 ALTER TABLE emp
-MODIFY last_name VARCHAR(50);
-
+MODIFY (last_name VARCHAR2(50));
 DESCRIBE emp;
 \end{lstlisting}
+
 \textbf{Output: }
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{graphics/p94.png}
+    \includegraphics[width=0.35\linewidth]{graphics/p94.png}
 \end{figure}
 
 %%%%%%%%% Problem 5 %%%%%%%%%%%
-
+\newpage
 \item Confirm that both the DEPT and EMP tables are stored in the data dictionary. (Hint:
 \texttt{USER\_TABLES})
 \begin{figure}[h]
@@ -92,14 +91,14 @@ DESCRIBE emp;
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
-SELECT table_name
-FROM information_schema.tables
-WHERE table_name IN ('dept', 'emp');
+select table_name
+from user_tables
+where table_name in ('DEPT','EMP');
 \end{lstlisting}
 \textbf{Output: }
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth]{graphics/p95.png}
+    \includegraphics[width=0.2\linewidth]{graphics/p95.png}
 \end{figure}
 
 %%%%%%%%% Problem 6 %%%%%%%%%%%
@@ -111,9 +110,9 @@ respectively.
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
 CREATE TABLE employees2 AS
-SELECT employee_id id, first_name, last_name, salary,
+SELECT employee_id id, first_name, last_name, salary, 
     department_id dept_id
-FROM employees;
+from hr.employees;
 \end{lstlisting}
 
 %%%%%%%%% Problem 7 %%%%%%%%%%%
@@ -129,7 +128,7 @@ DROP TABLE emp;
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
-RENAME TABLE employees2 TO emp;
+ALTER TABLE employees2 RENAME TO emp;
 \end{lstlisting}
 
 %%%%%%%%% Problem 9 %%%%%%%%%%%
@@ -138,15 +137,14 @@ additions in the data dictionary.
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
-ALTER TABLE dept
-COMMENT = 'This table stores department information';
-
-ALTER TABLE emp
-COMMENT = 'This table stores employee information';
-
-SELECT table_name, table_comment
-FROM information_schema.tables
-WHERE table_name IN ('dept', 'emp');
+COMMENT ON TABLE emp IS 
+    'This table stores employee information';
+COMMENT ON TABLE dept IS 
+    'This table stores dept information';
+SELECT *
+FROM user_tab_comments
+WHERE table_name = 'DEPT'
+	OR table_name = 'EMP';
 \end{lstlisting}
 \textbf{Output: }
 \begin{figure}[h]
@@ -161,8 +159,7 @@ description of the table.
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
 ALTER TABLE emp
-DROP COLUMN first_name;
-
+DROP COLUMN FIRST_NAME;
 DESCRIBE emp;
 \end{lstlisting}
 \textbf{Output: }
@@ -178,20 +175,29 @@ modification by checking the description of the table.
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
 ALTER TABLE emp
-SET UNUSED COLUMN dept_id;
+SET UNUSED (dept_id);
 
 DESCRIBE emp;
 \end{lstlisting}
+\textbf{Output: }
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{graphics/p911.png}
+\end{figure}
+%%%%%%%%% Problem 12 %%%%%%%%%%%
 \item Drop all the UNUSED columns from the EMP table. Confirm your modification by checking the
 description of the table.
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
+ALTER TABLE emp
+DROP UNUSED COLUMNS;
 
+DESCRIBE emp;
 \end{lstlisting}
-% \textbf{Output: }
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.5\linewidth]{graphics/p910.png}
-% \end{figure}
+\textbf{Output: }
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{graphics/p911.png}
+\end{figure}
 \end{enumerate}

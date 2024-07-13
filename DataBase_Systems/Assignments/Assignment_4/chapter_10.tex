@@ -8,7 +8,8 @@ successfully.
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
-
+ALTER TABLE emp
+ADD CONSTRAINT my_emp_id_pk PRIMARY KEY (id);
 \end{lstlisting}
 \textbf{Output: }
 % \begin{figure}[h]
@@ -24,7 +25,8 @@ successfully.
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
-
+ALTER TABLE dept
+ADD CONSTRAINT my_deptid_pk PRIMARY KEY(id);
 \end{lstlisting}
 
 %%%%%%%%% Problem 3 %%%%%%%%%%%
@@ -34,7 +36,11 @@ ensures that the employee is not assigned to a nonexistent department. Name the 
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
-
+ALTER TABLE emp
+ADD (dept_id NUMBER(7));
+ALTER TABLE emp
+ADD CONSTRAINT my_emp_dept_id_fk
+FOREIGN KEY (dept_id) REFERENCES dept(id);
 \end{lstlisting}
 % \textbf{Output: }
 % \begin{figure}[h]
@@ -47,18 +53,21 @@ ensures that the employee is not assigned to a nonexistent department. Name the 
 types and names of the constraints. Save your statement text in a file called \texttt{lab10\_4.sql}.
 \begin{figure}[h]
 \centering
-    \includegraphics[width=.7\linewidth]{graphics/104.png}
+    \includegraphics[width=.8\linewidth]{graphics/104.png}
 \end{figure}
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
-
+select constraint_name, constraint_type
+from user_constraints
+where table_name IN ('EMP', 'DEPT');
 \end{lstlisting}
-% \textbf{Output: }
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.5\linewidth]{graphics/p94.png}
-% \end{figure}
+\newpage
+\textbf{Output: }
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{graphics/p104.png}
+\end{figure}
 
 %%%%%%%%% Problem 5 %%%%%%%%%%%
 
@@ -67,13 +76,15 @@ and DEPT tables. Notice that the new tables and a new index were created.
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
-
+SELECT OBJECT_NAME, OBJECT_TYPE
+FROM USER_OBJECTS
+WHERE OBJECT_NAME IN ('EMP', 'DEPT');
 \end{lstlisting}
-% \textbf{Output: }
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.5\linewidth]{graphics/p95.png}
-% \end{figure}
+\textbf{Output: }
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\linewidth]{graphics/p95.png}
+\end{figure}
 
 %%%%%%%%% Problem 6 %%%%%%%%%%%
 \item Modify the EMP table. Add a COMMISSION column of NUMBER data type, precision 2, scale 2.
@@ -82,7 +93,12 @@ zero.
 
 \textbf{Solution: }
 \begin{lstlisting}[language=SQL]
+ALTER TABLE emp
+ADD commission NUMBER(2, 2);
 
+ALTER TABLE emp
+ADD CONSTRAINT chk_commission_positive 
+    CHECK (COMMISSION > 0);
 \end{lstlisting}
 
 \end{enumerate}
