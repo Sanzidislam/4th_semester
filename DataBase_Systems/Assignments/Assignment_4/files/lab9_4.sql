@@ -1,0 +1,4 @@
+ALTER TABLE emp
+MODIFY last_name VARCHAR(30);
+
+DESCRIBE emp;
