@@ -1,0 +1,5 @@
+employeeID,lastName,email,hireDate,jobID,salary,managerID,departmentID
+100,'King','SKING',17-JUN-03,'AD_PRES',24000,,90
+101,'Kochhar','NKOCHHAR',21-SEP-05,'AD_VP',17000,100,90
+102,'De Haan','LDEHAAN',13-JAN-01,'AD_VP',17000,100,90
+103,'Hunold','AHUNOLD',03-JAN-06,'IT_PROG',9000,102,60
